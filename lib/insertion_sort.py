@@ -16,7 +16,3 @@ def insertion_sort(A):
             
         A[j + 1] = key
         print(f"We insert {key} at position {j + 1}")
-A = [7, 10, 3, 5, 2, 6, 1]
-insertion_sort(A)
-
-print(f"\n\nThe final sorted array is: {A}")
