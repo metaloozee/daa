@@ -1,6 +1,6 @@
 from sorting import insertion_sort, selection_sort, merge_sort, quick_sort
 from searching import binary_search
-from greedy import dijkstra, Graph
+from greedy import Graph, dijkstra, knapsack
 
 g = Graph(5)
 g.graph = [
@@ -15,3 +15,5 @@ dijkstra(g, 0)
 print("Vertex\tDistance from Source\tParent")
 for v in range(g.V):
     print(f"{v}\t{g.distances[v]}\t\t\t{g.parents[v]}")
+    
+print(knapsack([60, 100, 120], [10, 20, 30], 50))

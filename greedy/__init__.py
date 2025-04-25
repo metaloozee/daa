@@ -2,7 +2,8 @@
 Greedy Approach Algorithms
 """
 
-from .dijkstra import dijkstra
 from .graph import Graph
+from .dijkstra import dijkstra
+from .knapsack import knapsack
 
-__all__ = ["dijkstra", "Graph"]
+__all__ = ["Graph", "dijkstra", "knapsack"]
