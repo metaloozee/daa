@@ -5,6 +5,18 @@ from dynamic_programming import fibonacci, LongestCommonSubsequence
 from backtracking import solve_n_queens
 from string_matching import naive
 
+P = [12, 3, 7, 9, 14, 6, 11, 2]
+print(f"Array before sort: {P}")
+print(f"Array after selection sort: {selection_sort(P)}")
+
+print("=" * 50)
+
+Q = [12, 3, 7, 9, 14, 6, 11, 2]
+print(f"Array before sort: {Q}")
+print(f"Array after insertion sort: {insertion_sort(Q)}")
+
+print("=" * 50)
+
 A = [12, 3, 7, 9, 14, 6, 11, 2]
 print(f"Array before sort: {A}")
 merge_sort(A, 0, len(A) - 1)
