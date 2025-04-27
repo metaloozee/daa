@@ -6,11 +6,12 @@ def merge_sort(A, p, r):
     merge_sort(A, q + 1, r)
     merge(A, p, q, r)
 
+
 def merge(A, p, q, r):
     nL = q - p + 1
     nR = r - q
-    L = A[p : p + nL]
-    R = A[(q+1) : (q+1) + nR]
+    L = A[p: p + nL]
+    R = A[(q+1): (q+1) + nR]
     i, j = 0, 0
     k = p
     while i < nL and j < nR:
