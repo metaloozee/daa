@@ -1,32 +1,32 @@
-def merge_sort(A, p, r):
-    if (p >= r):
+def merge_sort(A, low, high):
+    if (low >= high):
         return
-    q = (p + r) // 2
-    merge_sort(A, p, q)
-    merge_sort(A, q + 1, r)
-    merge(A, p, q, r)
+
+    mid = (low + high) // 2
+    merge_sort(A, low, mid)
+    merge_sort(A, mid + 1, high)
+    merge(A, low, mid, high)
 
 
-def merge(A, p, q, r):
-    nL = q - p + 1
-    nR = r - q
-    L = A[p: p + nL]
-    R = A[(q+1): (q+1) + nR]
-    i, j = 0, 0
-    k = p
-    while i < nL and j < nR:
-        if L[i] <= R[j]:
-            A[k] = L[i]
-            i += 1
+def merge(A, low, mid, high):
+    tmp = []
+    left = low
+    right = mid + 1
+
+    while left <= mid and right <= high:
+        if A[left] <= A[right]:
+            tmp.append(A[left])
+            left += 1
         else:
-            A[k] = R[j]
-            j += 1
-        k += 1
-    while i < nL:
-        A[k] = L[i]
-        i += 1
-        k += 1
-    while j < nR:
-        A[k] = R[j]
-        j += 1
-        k += 1
+            tmp.append(A[right])
+            right += 1
+
+    while left <= mid:
+        tmp.append(A[left])
+        left += 1
+    while right <= high:
+        tmp.append(A[right])
+        right += 1
+    
+    for i in range(len(tmp)):
+        A[low + i] = tmp[i]
