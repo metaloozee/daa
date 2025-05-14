@@ -1,30 +1,40 @@
-def solve_n_queens(n):
-    solutions = []
+def isSafe(row, col, board, n):
+    duprow = row
+    dupcol = col
+    
+    while row >= 0 and col >= 0:
+        if board[row][col] == 'Q':
+            return False
+        row -= 1
+        col -= 1
+    
+    row = duprow
+    col = dupcol
+    
+    while col >= 0:
+        if board[row][col] == 'Q':
+            return False
+        col -= 1
+        
+    row = duprow
+    col = dupcol
+    
+    while row < n and col >=0:
+        if board[row][col] == 'Q':
+            return False
+        row += 1
+        col -= 1
+        
+    return True
 
-    cols = set()
-    pos_diag = set()
-    neg_diag = set()
 
-    board = [['.'] * n for _ in range(n)]
-
-    def backtrack(row):
-        if row == n:
-            return solutions.append([''.join(row) for row in board])
-        for col in range(n):
-            if col in cols or (row + col) in pos_diag or (row - col) in neg_diag:
-                continue
-
-            cols.add(col)
-            pos_diag.add(row + col)
-            neg_diag.add(row - col)
-            board[row][col] = "Q"
-
-            backtrack(row + 1)
-
-            cols.remove(col)
-            pos_diag.remove(row + col)
-            neg_diag.remove(row - col)
+def solve_n_queens(col, board, ans, n):
+    if col == n:
+        ans.append([''.join(row) for row in board])
+        return
+    
+    for row in range(n):
+        if (isSafe(row, col, board, n)):
+            board[row][col] = 'Q'
+            solve_n_queens(col+1, board, ans, n)
             board[row][col] = '.'
-
-    backtrack(0)
-    return solutions
