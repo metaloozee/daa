@@ -1,20 +1,23 @@
-def naive(text: str, pattern: str):
+def naive(text: str, pattern: str) -> list:
+    ans = []
+    
     n = len(text)
     m = len(pattern)
-
-    occurrences = []
-
-    if m > n:
-        return occurrences
-
-    for s in range(n - m + 1):
+    
+    for i in range(n - m + 1):
         match = True
         for j in range(m):
-            if text[s + j] != pattern[j]:
+            if (text[i + j] != pattern[j]):
                 match = False
                 break
-        
-        if (match):
-            occurrences.append(s)
+        if match:
+            ans.append(i)
 
-    return occurrences
+    return ans
+    
+if __name__ == "__main__":
+    text = "ABACABABABAB"
+    pattern = "ABAB"
+    
+    print(f"String occurs at {naive(text, pattern)}")
+
